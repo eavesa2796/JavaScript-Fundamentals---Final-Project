@@ -32,3 +32,47 @@ project/
 ├── style.css
 ├── script.js
 └── README.md
+```
+---
+##Core Fetch Helper
+```code
+async function fetchWithSpinner({
+  url,
+  outputEl,
+  spinnerEl,
+  buttonEl,
+  transform,
+}) {
+  // Clear previous output
+  outputEl.innerHTML = "";
+
+  // Show spinner + disable button
+  spinnerEl.style.display = "block";
+  buttonEl.disabled = true;
+  buttonEl.style.opacity = "0.6";
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const html = transform(data);
+    outputEl.innerHTML = html;
+  } catch (err) {
+    outputEl.textContent = "⚠️ Error loading data.";
+    console.error(err);
+  } finally {
+    // Hide spinner + enable button
+    spinnerEl.style.display = "none";
+    buttonEl.disabled = false;
+    buttonEl.style.opacity = "1";
+  }
+}
+```
+
+---
+##Possible Enhancements
+
+- Add dark mode support
+- Add error toasts instead of plain text messages
+- Add more APIs (e.g., NASA, trivia, news)
+- Cache responses in localStorage
+- Add transitions/animations for card updates
