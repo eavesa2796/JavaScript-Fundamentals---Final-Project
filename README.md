@@ -34,8 +34,8 @@ project/
 └── README.md
 ```
 ---
-##Core Fetch Helper
-```code
+## Core Fetch Helper
+```js
 async function fetchWithSpinner({
   url,
   outputEl,
@@ -68,8 +68,8 @@ async function fetchWithSpinner({
 }
 ```
 
----
-##Possible Enhancements
+ --- 
+## Possible Enhancements
 
 - Add dark mode support
 - Add error toasts instead of plain text messages
